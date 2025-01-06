@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Quiz Craft</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+  <link rel="icon" href="./assets/58-0.png" type="image/png" />
+</head>
+<body>
+  <div id="logo-container">
+    <img src="./assets/logo.png" alt="Crafting Quiz Logo" id="logo">
+  </div>
+
+  <div id="main-content">
+    <div id="crafting-container">
+      <div id="craft-table"></div>
+      <div class="arrow">&#10132;</div>
+      <div id="result">?</div>
+    </div>
+
+    <div id="choices">
+      <input type="text" id="search-bar" placeholder="Search for items..." />
+      <div id="dropdown" class="dropdown-content"></div>
+      <div id="buttons-container">
+        <button id="submit-button">Submit</button>
+        <button id="continue-button" style="display: none;">Continue</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="constants.js"></script>
+  <script src="game.js"></script>
+  <script src="index.js"></script>
+</body>
+</html>
