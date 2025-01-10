@@ -9,26 +9,55 @@
   <link rel="icon" href="./assets/58-0.png" type="image/png" />
 </head>
 <body>
-  <div id="logo-container">
-    <img src="./assets/logo.png" alt="Crafting Quiz Logo" id="logo">
+  <div class="background"></div>
+  <div id="main-menu">
+    <div id="main-menu-logo-container">
+      <img src="./assets/logo.png" alt="Crafting Quiz Logo" id="main-menu-logo">
+      <div id="random-phrase" class="animated-text"></div>
+    </div>
+    <button id="start-game-button" class="minecraft-button">Start the Game</button>
   </div>
 
-  <div id="main-content">
-    <div id="crafting-container">
-      <div id="craft-table"></div>
-      <div class="arrow">&#10132;</div>
-      <div id="result">?</div>
+  <div id="game-interface" style="display: none;">
+    <div id="logo-container">
+      <img src="./assets/logo.png" alt="Crafting Quiz Logo" id="logo">
     </div>
 
-    <div id="choices">
-      <input type="text" id="search-bar" placeholder="Search for items..." />
-      <div id="dropdown" class="dropdown-content"></div>
-      <div id="buttons-container">
-        <button id="submit-button">Submit</button>
+    <div id="main-content">
+      <div id="crafting-section">
+        <div id="crafting-background">
+          <div id="crafting-label">Crafting</div>
+          <div id="score-container">
+            Score: <span id="score">0</span>
+          </div>
+          <div id="crafting-container">
+            <div id="craft-table"></div>
+            <div class="arrow">&#10132;</div>
+            <div id="result">?</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="choices">
+        <div id="correct-answer" style="display: none;"></div>
+        <div id="search-bar-container">
+          <input type="text" id="search-bar" placeholder="Search for items..." />
+          <div id="dropdown" class="dropdown-content"></div>
+          <div id="buttons-container">
+            <button id="submit-button">Submit</button>
+            <button id="skip-button">Skip</button>
+          </div>
+        </div>
         <button id="continue-button" style="display: none;">Continue</button>
       </div>
     </div>
   </div>
+
+  <button id="volume-toggle" class="volume-button">
+    <img src="./assets/volume.png" alt="Volume" id="volume-icon">
+  </button>
+
+  <audio id="background-music" src="./assets/music.mp3" loop></audio>
 
   <script src="constants.js"></script>
   <script src="game.js"></script>
