@@ -5,6 +5,8 @@ const SEARCH_BAR_ID = "search-bar";
 const DROPDOWN_ID = "dropdown";
 const SUBMIT_BUTTON_ID = "submit-button";
 const CONTINUE_BUTTON_ID = "continue-button";
+const SKIP_BUTTON_ID = "skip-button";
+const CORRECT_ANSWER_ID = "correct-answer";
 
 const GRID_CELL_CLASS = "gridCell";
 
@@ -24,6 +26,7 @@ class Game {
     const self = this;
     const submitButton = document.getElementById(SUBMIT_BUTTON_ID);
     const continueButton = document.getElementById(CONTINUE_BUTTON_ID);
+    const skipButton = document.getElementById(SKIP_BUTTON_ID);
 
     submitButton.addEventListener("click", function () {
       self.checkAnswer();
@@ -31,6 +34,10 @@ class Game {
 
     continueButton.addEventListener("click", function () {
       self.resetForNextRound();
+    });
+
+    skipButton.addEventListener("click", function () {
+      self.showCorrectAnswer();
     });
 
     const searchBar = document.getElementById(SEARCH_BAR_ID);
@@ -132,7 +139,7 @@ class Game {
   }
 
   checkAnswer() {
-    console.log("Checking answer. Selected ingredient:", this.selectedIngredient, "Correct ingredient:", this.currentRecipe[1]);
+    console.log("Checking answer. Selected ingredient:", this.selectedIngredient, "Correct ingredient:", this.currentRecipe[1]); // Debugging statement
     if (this.selectedIngredient === this.currentRecipe[1]) {
       this.showContinueButton();
     } else {
@@ -147,21 +154,42 @@ class Game {
   showContinueButton() {
     const submitButton = document.getElementById(SUBMIT_BUTTON_ID);
     const continueButton = document.getElementById(CONTINUE_BUTTON_ID);
+    const skipButton = document.getElementById(SKIP_BUTTON_ID);
     const searchBar = document.getElementById(SEARCH_BAR_ID);
     submitButton.style.display = "none";
     continueButton.style.display = "block";
-    continueButton.style.width = `${searchBar.offsetWidth + submitButton.offsetWidth + 10}px`;
+    skipButton.style.display = "none";
+    continueButton.style.width = "100%";
+    searchBar.style.display = "none";
+  }
+
+  showCorrectAnswer() {
+    const correctAnswerDiv = document.getElementById(CORRECT_ANSWER_ID);
+    const continueButton = document.getElementById(CONTINUE_BUTTON_ID);
+    const skipButton = document.getElementById(SKIP_BUTTON_ID);
+    const submitButton = document.getElementById(SUBMIT_BUTTON_ID);
+    const searchBar = document.getElementById(SEARCH_BAR_ID);
+    correctAnswerDiv.innerHTML = `Correct Answer: ${ITEM_NAMES[this.currentRecipe[1]]}`;
+    correctAnswerDiv.style.display = "block";
+    continueButton.style.display = "block";
+    skipButton.style.display = "none";
+    submitButton.style.display = "none";
+    continueButton.style.width = "100%";
     searchBar.style.display = "none";
   }
 
   resetForNextRound() {
     const submitButton = document.getElementById(SUBMIT_BUTTON_ID);
     const continueButton = document.getElementById(CONTINUE_BUTTON_ID);
+    const skipButton = document.getElementById(SKIP_BUTTON_ID);
     const searchBar = document.getElementById(SEARCH_BAR_ID);
+    const correctAnswerDiv = document.getElementById(CORRECT_ANSWER_ID);
     submitButton.style.display = "block";
     continueButton.style.display = "none";
+    skipButton.style.display = "block";
     continueButton.style.width = "";
     searchBar.style.display = "block";
+    correctAnswerDiv.style.display = "none";
     this.resetCraftingTable();
     this.loadRandomRecipe();
   }
