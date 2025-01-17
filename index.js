@@ -1,10 +1,27 @@
 document.getElementById('start-game-button').addEventListener('click', function() {
+  startGame('crafting');
+});
+
+document.getElementById('start-guess-item-button').addEventListener('click', function() {
+  startGame('guessItem');
+});
+
+document.getElementById('back-to-menu-button').addEventListener('click', function() {
+  document.getElementById('game-interface').style.display = 'none';
+  document.getElementById('main-menu').style.display = 'flex';
+  const backgroundMusic = document.getElementById('background-music');
+  backgroundMusic.pause();
+  backgroundMusic.currentTime = 0;
+});
+
+function startGame(mode) {
   document.getElementById('main-menu').style.display = 'none';
-  document.getElementById('game-interface').style.display = 'block';
+  document.getElementById('game-interface').style.display = 'flex';
   const backgroundMusic = document.getElementById('background-music');
   backgroundMusic.volume = 0.4;
   backgroundMusic.play();
-});
+  game.setMode(mode);
+}
 
 const phrases = [
   "Crafting Fun!",
@@ -29,17 +46,25 @@ function updateScore(points) {
   document.getElementById('score').textContent = score;
 }
 
+function resetScore() {
+  score = 0;
+  document.getElementById('score').textContent = score;
+}
 
 function checkAnswer(isCorrect) {
   if (isCorrect) {
-    updateScore(10);
+    updateScore(1);
   }
 }
 
-
 document.getElementById('submit-button').addEventListener('click', function() {
-  const isCorrect = true;
+  const isCorrect = game.checkAnswer();
   checkAnswer(isCorrect);
+});
+
+document.getElementById('skip-button').addEventListener('click', function() {
+  resetScore();
+  game.showCorrectAnswer();
 });
 
 const volumeToggle = document.getElementById('volume-toggle');
