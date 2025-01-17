@@ -15,7 +15,10 @@
       <img src="./assets/logo.png" alt="Crafting Quiz Logo" id="main-menu-logo">
       <div id="random-phrase" class="animated-text"></div>
     </div>
-    <button id="start-game-button" class="minecraft-button">Start the Game</button>
+    <div id="main-menu-buttons">
+      <button id="start-game-button" class="minecraft-button">Guess the Recipe</button>
+      <button id="start-guess-item-button" class="minecraft-button">Guess the Item Name</button>
+    </div>
   </div>
 
   <div id="game-interface" style="display: none;">
@@ -49,6 +52,7 @@
           </div>
         </div>
         <button id="continue-button" style="display: none;">Continue</button>
+        <button id="back-to-menu-button" class="minecraft-button red-button">Back to Menu</button>
       </div>
     </div>
   </div>
@@ -60,7 +64,7 @@
   <audio id="background-music" src="./assets/music.mp3" loop></audio>
 
   <script src="constants.js"></script>
-  <script src="game.js"></script>
   <script src="index.js"></script>
+  <script src="game.js"></script>
 </body>
 </html>
