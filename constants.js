@@ -300,7 +300,7 @@ const MUSIC_DISC_WARD = 2265;
 const MUSIC_DISC_11 = 2266;
 const MUSIC_DISC_WAIT = 2267;
 
-// items names ig
+// items names ig for the guess the items
 const ITEM_NAMES = {
   1: "Stone",
   2: "Grass",
@@ -603,7 +603,7 @@ const ITEM_NAMES = {
 
 const RECIPES = [];
 
-// recipes
+// recipes for guess the recipes
 RECIPES.push(["Wood Planks", WOOD_PLANK, [0, 0, 0, 0, WOOD, 0, 0, 0, 0]]);
 RECIPES.push(["Stick", STICK, [0, 0, 0, WOOD_PLANK, WOOD_PLANK, 0, 0, 0, 0]]);
 RECIPES.push(["Torch", TORCH, [0, COAL, 0, STICK, 0, 0, 0, 0, 0]]);
@@ -685,4 +685,7 @@ RECIPES.push(["Firework Rocket", FIREWORK_ROCKET, [PAPER, GUNPOWDER, 0, 0, 0, 0,
 RECIPES.push(["Firework Star", FIREWORK_STAR, [GUNPOWDER, DYE, 0, 0, 0, 0, 0, 0, 0]]);
 RECIPES.push(["Armor Stand", ARMOR_STAND, [STICK, STICK, STICK, STICK, STONE_SLAB, STICK, 0, 0, 0]]);
 RECIPES.push(["Shield", SHIELD, [WOOD_PLANK, WOOD_PLANK, WOOD_PLANK, WOOD_PLANK, IRON_INGOT, WOOD_PLANK, WOOD_PLANK, WOOD_PLANK, WOOD_PLANK]]);
-RECIPES.push(["Elytra", ELYTRA, [LEATHER, LEATHER, LEATHER, LEATHER, LEATHER, LEATHER, LEATHER, LEATHER, LEATHER]]);
+RECIPES.push(["Cake", CAKE, [MILK_BUCKET, SUGAR, EGG, SUGAR, WHEAT, WHEAT, WHEAT, 0, 0]]);
+RECIPES.push(["Map", MAP, [0, 0, 0, PAPER, COMPASS, PAPER, PAPER, PAPER, PAPER]]);
+RECIPES.push(["Clock", CLOCK, [0, 0, 0, GOLD_INGOT, REDSTONE, GOLD_INGOT, 0, GOLD_INGOT, 0]]);
+RECIPES.push(["Compass", COMPASS, [0, IRON_INGOT, 0, IRON_INGOT, REDSTONE, IRON_INGOT, 0, IRON_INGOT, 0]]);
