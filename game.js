@@ -15,6 +15,7 @@ class Game {
     this.selectedInventoryCell = null;
     this.selectedIngredient = null;
     this.newIngredient = null;
+    this.mode = 'crafting';
 
     this.bindEvent();
 
@@ -58,6 +59,11 @@ class Game {
     });
   }
 
+  setMode(mode) {
+    this.mode = mode;
+    this.resetForNextRound();
+  }
+
   initCraftingTable() {
     const craftTableElement = document.getElementById(CRAFTING_TABLE_ID);
     craftTableElement.innerHTML = "";
@@ -89,9 +95,17 @@ class Game {
   }
 
   loadRandomRecipe() {
-    const randomIndex = Math.floor(Math.random() * RECIPES.length);
-    this.currentRecipe = RECIPES[randomIndex];
-    this.showRecipe();
+    if (this.mode === 'crafting') {
+      const randomIndex = Math.floor(Math.random() * RECIPES.length);
+      this.currentRecipe = RECIPES[randomIndex];
+      this.showRecipe();
+    } else if (this.mode === 'guessItem') {
+      const itemIds = Object.keys(ITEM_NAMES);
+      const randomIndex = Math.floor(Math.random() * itemIds.length);
+      this.currentRecipe = [null, parseInt(itemIds[randomIndex]), Array(9).fill(0)];
+      this.currentRecipe[2][4] = this.currentRecipe[1];
+      this.showRecipe();
+    }
     this.populateDropdown();
   }
 
@@ -137,17 +151,19 @@ class Game {
     document.getElementById(SEARCH_BAR_ID).value = ITEM_NAMES[option];
     console.log("Selected ingredient:", this.selectedIngredient);
   }
-
+// check answear fuction
   checkAnswer() {
-    console.log("Checking answer. Selected ingredient:", this.selectedIngredient, "Correct ingredient:", this.currentRecipe[1]); // Debugging statement
+    console.log("Checking answer. Selected ingredient:", this.selectedIngredient, "Correct ingredient:", this.currentRecipe[1]);
     if (this.selectedIngredient === this.currentRecipe[1]) {
       this.showContinueButton();
+      return true;
     } else {
       const submitButton = document.getElementById(SUBMIT_BUTTON_ID);
       submitButton.classList.add("shake");
       setTimeout(() => {
         submitButton.classList.remove("shake");
       }, 500);
+      return false;
     }
   }
 
